@@ -1,14 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-        
 
-class WordMetada:
+class WordMetadata:
 
-    def __init_(self):
+    def __init__(self):
         self.__sentences = Sentences()
         self.__labeled_sentences = Labels()
         
     def add_metadata(self, sentences, labeled_sentences):
-        if len(sentences) == len(labled_sentences):
+        if len(sentences) == len(labeled_sentences):
             self.__sentences.append_sentence(sentences)
-            self.__labeled_sentences.append_sentence(labeled_sentences)
+            self.__labeled_sentences.append_labeled_sentence(labeled_sentences)
         else:
             # ignore
             pass
@@ -30,7 +32,9 @@ class Sentences:
     # public methods
     def append_sentence(self, sentence):
         self.__sentences.append(sentence)
-
+        
+    def get_sentences(self):
+        return self.__sentences
     # private methods
 
 class Labels:
@@ -46,3 +50,5 @@ class Labels:
         self.__labeled_sentences.append(sentence)
 
     # private methods    
+    def get_labels(self):
+        return self.__labeled_sentences
