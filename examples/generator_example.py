@@ -3,7 +3,7 @@
 
 from Generator import Generator
 
-generator = Generator('data/data-0')
+generator = Generator('data-example/data-0')
 tags = generator.get_all_tags([u'我', 'event'])
 
 metadata =  generator.label_sentences(generator.get_text(), tags)
