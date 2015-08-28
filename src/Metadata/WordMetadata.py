@@ -17,6 +17,9 @@ class WordMetadata:
             
     def get_metadata(self):
         return self.__sentences, self.__labeled_sentences
+
+    def is_empty(self):
+        return self.__sentences.is_empty()
     
 ####
 # helper classes
@@ -35,6 +38,15 @@ class Sentences:
         
     def get_sentences(self):
         return self.__sentences
+
+    def get_sentence(self, idx, words=False):
+        if (words):
+            return self.__sentences[idx]
+        else:
+            return ' '.join(word for word in self.__sentences[idx])
+
+    def is_empty(self):
+        return len(self.__sentences) == 0
     # private methods
 
 class Labels:
@@ -52,3 +64,12 @@ class Labels:
     # private methods    
     def get_labels(self):
         return self.__labeled_sentences
+
+    def get_labeled_sentence(self, idx, label_list=False):
+        if (label_list):
+            return self.__labeled_sentences[idx]
+        else:
+            return ' '.join(label for label in self.__labeled_sentences[idx])
+
+    def is_empty(self):
+        return len(self.__labeled_sentences) == 0

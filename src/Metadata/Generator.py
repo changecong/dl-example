@@ -7,7 +7,7 @@ from WordMetadata import WordMetadata
 import xml.etree.ElementTree as ET
 
 
-class Generator:
+class XMLDataReader:
 
     def __init__(self, file_name):
         self.__tree = etree.parse(file_name)
@@ -132,6 +132,78 @@ class Generator:
 
         return metadata
 
+    def generate_text_file(self, metadata, file_name, append=False, offset=0):
+        # write data into a text file with following format
+        # id   content  type
+        #  0 shi ge zhu   s
+        #  0 ni NA NA     l
+        #  1 cai shi zhu  s
+        #  1 ni NA NA     l
+        
+        way_to_open = ''
+        if append:
+            way_to_open='a'
+        else:
+            way_to_open='w'
+            
+        if not metadata.is_empty():
+            
+            # open output file
+            output_file = open(file_name, way_to_open)
+            
+            sentences, labels = metadata.get_metadata()
+            for idx in range(len(sentences.get_sentences())):
+                content_sentence = sentences.get_sentence(idx, False).encode('utf-8') 
+                content_label = labels.get_labeled_sentence(idx, False).encode('utf-8') 
+                
+                output_file.write(str(offset + idx) + " " + \
+                                  content_sentence + " s\n")
+                output_file.write(str(offset + idx) + " " + \
+                                  content_label + " l\n")
+            # close output file
+            output_file.close()
+                    
+class TextDataReader:
+    
+    def __init__(self, file_name):
+        self.__file_name = file_name
+
+    def get_metadata(self):
+
+        input_file = open(self.__file_name, 'r')
+        
+        metadata = WordMetadata()
+
+        sentence_label_pair = []
+        for line in input_file:
+            line = line.decode('utf-8')
+            sentence_label_pair.append(line)
+            if (len(sentence_label_pair) == 2):
+                sentence, label = self.__pair_to_data(sentence_label_pair)
+                if len(sentence) == 0 or len(label) == 0:
+                    # on error
+                    del sentence_label_pair[0]
+                else:
+                    metadata.add_metadata(sentence, label)
+                    sentence_label_pair = []
+        
+        input_file.close()
+
+        return metadata
+
+    def __pair_to_data(self, pair):
+        line_sentence = pair[0]
+        line_label = pair[1]
+
+        list_sentence = line_sentence.split()
+        list_label = line_label.split()
+
+        if list_sentence[0] != list_label[0] or list_sentence[-1] == list_label[-1]:
+            # on error
+            return [], []
+        else:
+            return list_sentence[1:-1], list_label[1:-1]
+            
 class Tag:
     
     def __init__(self, tag_element):
