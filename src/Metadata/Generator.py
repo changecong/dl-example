@@ -78,20 +78,36 @@ class Generator:
         # second pass
         metadata = WordMetadata()
 
-        for i in range(1, len(sentences_and_positions) - 1):
-            temp_sentence = sentences_and_positions[i]
-            if isinstance(temp_sentence, basestring) and len(temp_sentence) != 0:
+        for i in range(1, len(sentences_and_positions)):
 
+            # get current sentence
+            temp_sentence = sentences_and_positions[i]
+
+            # if it isn't a string or empty, then ignore
+            if isinstance(temp_sentence, basestring) and len(temp_sentence) != 0:
+                # get its start position
+                # since the first element is always 0, i - 1 is safe to be used withou check
+                start_position = sentences_and_positions[i - 1]
+
+                # splits string to a list of words
                 temp_words = temp_sentence.split()
+
+                # generates a list of labels, initializes with 'NA'
                 temp_labels = ['NA'] * len(temp_words)
 
+                # find the first magic_words index
                 index = temp_sentence.find(magic_word)
                 count = 0
                 label_index = 0
+
                 while index != -1:
+
                     lable = ""
-                    if tags.get(str(index + 1), False):
-                        label = tags[str(index + 1)].tag
+
+                    # way to calculate the position of magic word
+                    # <start position> + index + 1
+                    if tags.get(str(start_position + index + 1), False):
+                        label = tags[str(start_position + index + 1)].tag
                     else:
                         label = "NA"
 
@@ -112,7 +128,7 @@ class Generator:
                 temp_words = list(filter(lambda word: word != magic_word, temp_words))
                 temp_labels = list(filter(lambda label: label != magic_word, temp_labels))
             
-                metadata.add_metadata(temp_words, temp_labels)
+                metadata.add_metadata(temp_words, temp_labels)                
 
         return metadata
 
