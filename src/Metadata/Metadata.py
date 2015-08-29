@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-        
+# -*- coding: utf-8 -*-
 
 class WordMetadata:
-
+    
     def __init__(self):
         self.__sentences = Sentences()
         self.__labeled_sentences = Labels()
-        
+            
     def add_metadata(self, sentences, labeled_sentences):
         if len(sentences) == len(labeled_sentences):
             self.__sentences.append_sentence(sentences)
@@ -14,12 +14,33 @@ class WordMetadata:
         else:
             # ignore
             pass
-            
+                
     def get_metadata(self):
         return self.__sentences, self.__labeled_sentences
 
     def is_empty(self):
         return self.__sentences.is_empty()
+
+
+class VectorMetadata:
+    
+    def __init__(self):
+        self.__vector_sentences = VectorSentences()
+        self.__labeled_sentences = Labels()            
+
+    def add_metadata(self, vector_sentences, labeled_sentences):
+        if len(vector_sentences) == len(labeled_sentences):
+            self.__vector_sentences.append_sentence(vector_sentences)
+            self.__labeled_sentences.append_labeled_sentence(labeled_sentences)
+        else:
+            # ignore
+            pass
+                
+    def get_metadata(self):
+        return self.__vector_sentences, self.__labeled_sentences
+
+    def is_empty(self):
+        return self.__vector_sentences.is_empty()
     
 ####
 # helper classes
@@ -49,9 +70,29 @@ class Sentences:
         return len(self.__sentences) == 0
     # private methods
 
+class VectorSentences:
+
+    # constructor
+    def __init__(self):
+        # a list of sentences
+        self.__vector_sentences = []
+
+    # public methods
+    def append_sentence(self, sentence):
+        self.__vector_sentences.append(sentence)
+        
+    def get_sentences(self):
+        return self.__vector_sentences
+
+    def get_sentence(self, idx):
+        return self.__vector_sentences[idx]
+
+    def is_empty(self):
+        return len(self.__vector_sentences) == 0
+    # private methods
+
 class Labels:
     
-
     # constructor
     def __init__(self):
         # a list of sentneces' labels

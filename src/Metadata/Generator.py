@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-        
 
 from lxml import etree
-from WordMetadata import WordMetadata
+from Metadata import WordMetadata
 
 import xml.etree.ElementTree as ET
-
 
 class XMLDataReader:
 
