@@ -51,4 +51,31 @@ class VectorConverter:
                 
         return vector_metadata
 
+    def save_metadata_to_file(self, vector_metadata, file_name, append=False):
 
+        if isinstance(vector_metadata, VectorMetadata):
+            vector_sentences, labeled_sentences = vector_metadata.get_metadata()
+            vectors = vector_sentences.get_sentences() # list
+            labels = labeled_sentences.get_labels() # list
+            
+            if len(vectors) == len(labels) and \
+                    len(vectors) != 0 and len(labels) != 0:
+                
+                way_to_opend = ''
+                if append:
+                    way_to_open = 'a'
+                else:
+                    way_to_open = 'w'
+
+                output_file = open(file_name, way_to_open)
+
+                for vector_sentence, labeled_sentence in zip(vectors, labels):
+                    output_file.write('#\n') # indicates a sentence
+                    for vector, label in zip(vector_sentence, labeled_sentence):
+                        output_file.write(label.encode('utf-8') + ' ')
+                         # '1.8e' accuracy is 1.8f 'e' means using scientific notation
+                        output_file.write(' '.join('%1.8e' % number for number in vector))
+                        output_file.write('\n')
+
+                output_file.close()
+                    
