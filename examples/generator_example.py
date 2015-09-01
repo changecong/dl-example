@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Generator import XMLDataReader, TextDataReader
+from generator import XMLDataReader, TextDataReader
 
 xmlreader = XMLDataReader('data-example/data-0')
 tags = xmlreader.get_all_tags([u'我', u'你', u'他', u'她', u'它', \
@@ -11,9 +11,9 @@ tags = xmlreader.get_all_tags([u'我', u'你', u'他', u'她', u'它', \
 
 xml_metadata = xmlreader.label_sentences(xmlreader.get_text(), tags)
 
-xmlreader.generate_text_file(xml_metadata, 'output')
+xmlreader.generate_text_file(xml_metadata, 'labeled_words')
 
-textreader = TextDataReader('output')
+textreader = TextDataReader('labeled_words')
 
 text_metadata = textreader.get_metadata()
 

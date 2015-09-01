@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from gensim.models import Word2Vec
-from Generator import TextDataReader
-from Metadata import WordMetadata, VectorMetadata
+from generator import TextDataReader
+from metadata import WordMetadata, VectorMetadata
 
 import numpy
 
