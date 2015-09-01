@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-        
 
 from lxml import etree
-from Metadata import WordMetadata
+from metadata import WordMetadata
 
 import xml.etree.ElementTree as ET
 

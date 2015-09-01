@@ -1,4 +1,4 @@
-from Converter import VectorConverter
+from converter import VectorConverter
 
 if __name__ == '__main__':
 

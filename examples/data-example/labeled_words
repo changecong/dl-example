@@ -1,0 +1,122 @@
+0 亲爱 的 ， 在 不 s
+0 NA NA NA NA NA l
+1 在 s
+1 我 l
+2 吃饭 了 吗 s
+2 你 NA NA l
+3 吃 过 了 s
+3 我 NA NA l
+4 你 呢 ？ s
+4 NA NA NA l
+5 吃 了 s
+5 我 NA l
+6 看 不 看 电影 ？ s
+6 你 NA NA NA NA l
+7 不 知道 能 不 能 发 过来 ？ s
+7 我 NA 你 NA NA NA NA NA l
+8 有 好 电影 s
+8 我 NA NA l
+9 看 不 s
+9 你 NA l
+10 我 发给 你 *PRO* 试试 s
+10 NA NA NA NA NA l
+11 我 发给 你 了 s
+11 NA NA NA NA l
+12 你 上去 应该 可以 收 s
+12 NA NA NA NA NA l
+13 我 怎么 接 啊 s
+13 NA NA NA NA l
+14 刚才 提示 我 已 上传 至 服务器 s
+14 NA 它 NA NA NA NA NA l
+15 不 懂 *PRO* 弄 s
+15 我 NA NA NA l
+16 你 看 不 到 提示 吗 s
+16 NA NA NA NA NA NA l
+17 手机 能 看到 吗 s
+17 你 NA NA NA l
+18 不 可以 s
+18 我 NA l
+19 你 是 手机 上网 吗 s
+19 NA NA NA NA NA l
+20 电脑 才 可以 s
+20 NA NA NA l
+21 等下 去 电脑 上 弄 s
+21 我 NA NA NA NA l
+22 呵呵 s
+22 NA l
+23 不 董 再 请教 s
+23 我 NA 你 NA l
+24 呵呵 s
+24 NA l
+25 这 几 天 没 和 你 联系 ， 特 想 你 s
+25 我 NA NA NA NA NA NA NA NA NA NA l
+26 忙 吗 s
+26 你 NA l
+27 这 几 心烦 ， 跑去 打牌 s
+27 我 NA NA NA NA NA l
+28 天 s
+28 NA l
+29 啊 s
+29 NA l
+30 你 还 会 打牌 ？ s
+30 NA NA NA NA NA l
+31 车间 不 忙 ， 我 忙 s
+31 NA NA NA NA NA NA l
+32 月底 月初 要 对帐 s
+32 NA NA 我 NA l
+33 哦 s
+33 NA l
+34 这 几 天 看 这些 数 ， 头 都 大 啦 ， 真 佩服 那些 会计 s
+34 NA NA NA 我 NA NA NA NA NA NA NA NA 我 NA NA NA l
+35 财务 是 很 麻烦 s
+35 NA NA NA NA l
+36 最近 还 好 吧 s
+36 你 NA NA NA l
+37 会 打 麻将 s
+37 你 NA NA l
+38 还 好 ， 只是 天气 太 闷 ， 闷 得 受 不 了 s
+38 我 NA NA NA NA NA NA NA NA NA NA NA NA l
+39 深圳 是 很 难受 s
+39 NA NA NA NA l
+40 潮湿 s
+40 pleonastic l
+41 嗯 s
+41 NA l
+42 关键 是 人 太 胖 了 s
+42 NA NA NA NA NA NA l
+43 哈哈 s
+43 NA l
+44 还 好 那 s
+44 你 NA NA l
+45 不 好 啦 ， 65 Kg s
+45 我 NA NA NA 我 NA l
+46 晚上 自己 做 菜 吗 s
+46 NA NA NA NA NA l
+47 才 155 cm s
+47 我 NA NA l
+48 大部分 自己 做 宵夜 s
+48 NA NA NA NA l
+49 晚上 不 要 吃 宵夜 s
+49 NA 你 NA NA NA l
+50 那样 容易 长胖 s
+50 NA generic NA l
+51 我 一般 过 了 8点 就 不 吃 东西 了 s
+51 NA NA 我 NA NA NA NA NA NA NA l
+52 呵呵 s
+52 NA l
+53 明白 这 个 道理 呀 ， 但 有时 做事 太 晚 不 吃 不 行 呀 s
+53 我 NA NA NA NA NA NA NA 我 NA NA 我 NA NA NA NA l
+54 呵呵 s
+54 NA l
+55 那 倒 是 s
+55 NA NA NA l
+56 休息 下 去 吧 s
+56 我 NA 我 NA l
+57 特别是 李小兵 ， 我 有时 不 去 ， 他 便 拉 着 去 s
+57 NA NA NA NA NA NA NA NA NA NA NA NA NA l
+58 好 的 s
+58 previous_utterance NA l
+59 88 s
+59 我们 l
+60 88 s
+60 我们 l
