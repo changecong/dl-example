@@ -1,0 +1,9 @@
+[Issue-xx]
+
+[Task]/[Problem]
+
+[Solution]
+
+[Bonus]
+
+[Test]
