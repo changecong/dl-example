@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-        
 
 from lxml import etree
-from metadata import WordMetadata
+from metadata import WordMetadata, VectorMetadata
 
 import xml.etree.ElementTree as ET
+import numpy
 
 class XMLDataReader:
 
@@ -163,13 +164,10 @@ class XMLDataReader:
             output_file.close()
                     
 class TextDataReader:
-    
-    def __init__(self, file_name):
-        self.__file_name = file_name
 
-    def get_metadata(self):
+    def get_metadata_from_word_data(self, file_name):
 
-        input_file = open(self.__file_name, 'r')
+        input_file = open(file_name, 'r')
         
         metadata = WordMetadata()
 
@@ -202,7 +200,41 @@ class TextDataReader:
             return [], []
         else:
             return list_sentence[1:-1], list_label[1:-1]
+
+    def get_metadata_from_vector_data(self, file_name):
+        
+        input_file = open(file_name, 'r')
+
+        metadata = VectorMetadata()
+        
+        sentence = []
+        labeled_sentence = []
+
+        for line in input_file:
             
+            # sentence starts
+            if line[0] == '#':
+                if len(sentence) != 0 and len(labeled_sentence) != 0:
+                    metadata.add_metadata(sentence, labeled_sentence)
+                sentence = []
+                labeled_sentence = []
+            else:
+                line_list = line.split()
+                label = line_list[0].decode('utf-8')
+                word_vectors = []
+                for number in line_list[1:]:
+                    word_vectors.append(float(number))
+                    
+                sentence.append(numpy.array(word_vectors, dtype=numpy.float32))
+                labeled_sentence.append(label)
+
+        # for the last sentence
+        metadata.add_metadata(sentence, labeled_sentence)
+
+        input_file.close()
+        return metadata
+
+
 class Tag:
     
     def __init__(self, tag_element):
