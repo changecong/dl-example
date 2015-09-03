@@ -50,7 +50,7 @@ class XMLDataReader:
         # 3. label each word
     
         magic_word = "*pro*"
-        stupid_word = "suid"
+        stupid_word = "participant"
         
         # first pass
         # 1. remove stupid lines
@@ -61,6 +61,7 @@ class XMLDataReader:
 
         # newlines are removed during the split we should still count them on generating positions
         for sentence in text.splitlines():
+
             if stupid_word in sentence:
                 if len(sentences_and_positions) == 0:
                     # ideally this line won't be hit
@@ -73,7 +74,13 @@ class XMLDataReader:
                                                    len(sentences_and_positions[-1]) + \
                                                    len(sentence) + 2)            
             else:
-                sentences_and_positions.append(sentence)
+                if len(sentences_and_positions) % 2 == 1:
+                    sentences_and_positions.append(sentence)
+                else:
+                    sentences_and_positions.append(sentences_and_positions[-2] + \
+                                                   len(sentences_and_positions[-1]) + \
+                                                   1)
+                    sentences_and_positions.append(sentence)
 
         # second pass
         metadata = WordMetadata()
